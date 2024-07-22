@@ -1,0 +1,10 @@
+Tema 6
+1. Am creat un model orientat pe obiect al jocului propus, utilizand metoda "retained" pentru desenarea tablei de joc.
+2. In clasa **DrawingPanel** ( metoda **private void initPanel()** ) am implementat un _addMouseListener_ care suprascrie metoda predefinita **mousePressed(MouseEvent e)**, pentru a putea selecta, prin apasarea unui buton de pe mouse, liniile ce trebuie colorate.
+3. Pentru a selecta o anumita linie, am utilizat ecuatia dreptei si a distantei de la un punct la o dreapta (clasa **DrawingPanel**, metoda **private int[] selectLine(int coordX, int coordY)**).
+4. Pentru a nu recolora o linie si pentru a valida liniile selectate, am creat clasa **Game** unde avem construite doua liste de linii colorate de fiecare jucator. Se verifica existenta liniei selectate in aceste doua liste. In cazul in care linia este deja colorata, se afiseaza mesajul unei exceptii de tip **IllegalAccessException**, altfel se va adauga in lista corespunzatoare jucatorului.
+5. In clasa **Game**, metoda **public void determineTheWinner(List<List<Integer>> linesList, int player)**, se determina castigatorul. Daca un punct este accesat de cel putin doua ori, atunci se cauta in lista corespunzatoare jucatorului o linie ce ar putea crea un triunghi cu celelalte doua linii ce pornesc din punctul tinta.
+6. Pentru a favoriza exportarea tablei de joc intr-un fisier de tip PNG, am creat o metoda **private void savePNG(ActionEvent event)** in clasa **ControlPanel**. Metoda a fost atribuita ca actiune butonului _Load_.
+7. Pentru a salva starea curenta a jocului, am creat trei clase _Line, Vertex_ si _ColoredLines_ ce implementeaza interfata speciala **Serializable**. Butonul _Save_ are ca actiune serializarea unui obiect de tip **ColoredLines**.
+8. Deserializarea se va aplica ca actiune butonului _Reset_. Tot aici se verifica ce jucator ar trebui sa continuie jocul.
+9. (De)Serializarea se va face intr-un fisier extern de tip JSON, localizat in mapa **Save_Restore_Board**.
